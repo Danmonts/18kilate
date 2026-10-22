@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica Veterinária no Itaim Paulista. Atendimento clínico, cirurgias, internação e exames laboratoriais. Agende a avaliação do seu pet.">
     <title>18 Ki Late | Clínica Veterinária</title>
-    <!-- Favicon do site -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         /* Variáveis de Cores e Estilos */
@@ -16,6 +16,7 @@
             --text-light: #F8F9FA;
             --bg-light: #F4F6F9;
             --white: #FFFFFF;
+            --whatsapp: #25D366;
             --transition: all 0.3s ease;
         }
 
@@ -39,7 +40,7 @@
         header {
             background-color: var(--white);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: fixed;
+            position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -54,7 +55,6 @@
             margin: 0 auto;
         }
 
-        /* Ajuste do Logotipo (Imagem + Texto) */
         .logo {
             display: flex;
             align-items: center;
@@ -112,6 +112,44 @@
         .btn-agendar:hover {
             background-color: var(--secondary-color);
             box-shadow: 0 4px 15px rgba(123, 31, 162, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Botão WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: currentColor;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         /* Seções Genéricas */
@@ -129,15 +167,15 @@
             text-transform: uppercase;
         }
 
-        /* Início (Hero Section) refinado */
+        /* Início (Hero Section) */
         #inicio {
-            min-height: 100vh;
+            min-height: calc(100vh - 40px);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
             background: linear-gradient(rgba(74, 20, 140, 0.85), rgba(33, 37, 41, 0.85)), url('hero-banner.jpg') center/cover no-repeat fixed;
-            padding-top: 100px;
             color: var(--white);
         }
 
@@ -154,20 +192,28 @@
             color: #ddd;
             margin-bottom: 2rem;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
             padding: 0 15px;
         }
 
-        /* 4 Pilares Principais (Destaque) */
+        .hero-cta {
+            font-size: 1.2rem;
+            padding: 15px 35px;
+            background-color: var(--whatsapp);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            margin-bottom: 3rem;
+        }
+        
+        .hero-cta:hover {
+            background-color: #20ba5a;
+        }
+
+        /* Pilares */
         .specialty-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
             margin-top: 1rem;
             max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
             width: 100%;
         }
 
@@ -199,17 +245,16 @@
             color: #eee;
         }
 
-        /* Carrossel Contínuo e Fluido */
+        /* Carrossel Ajustado com Blur */
         .ticker-container {
-            margin-top: 2rem;
+            margin-top: 3rem;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
             padding: 10px 0;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
             width: 100%;
             position: relative;
         }
@@ -231,16 +276,14 @@
             gap: 8px;
         }
 
-        .ticker-item span {
-            color: var(--accent-color);
-        }
+        .ticker-item span { color: var(--accent-color); }
 
         @keyframes scrollTicker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Layout em Duas Colunas (Imagem + Texto) */
+        /* Layout em Duas Colunas */
         .flex-container {
             display: flex;
             align-items: center;
@@ -252,17 +295,8 @@
             margin-bottom: 2rem;
         }
 
-        .flex-container.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .text-content-half {
-            flex: 1;
-        }
-
-        .image-half {
-            flex: 1;
-        }
+        .flex-container.reverse { flex-direction: row-reverse; }
+        .text-content-half, .image-half { flex: 1; }
 
         .image-half img {
             width: 100%;
@@ -283,9 +317,7 @@
             margin-bottom: 2rem;
         }
 
-        #servicos h2 {
-            color: var(--accent-color);
-        }
+        #servicos h2 { color: var(--accent-color); }
 
         .services-grid {
             display: grid;
@@ -320,7 +352,7 @@
             font-size: 1.3rem;
         }
 
-        /* Sobre (Visão e Valores) */
+        /* Visão e Valores */
         .vision-values {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -357,7 +389,7 @@
             font-style: normal;
         }
 
-        /* Fale Conosco Ajustado */
+        /* Fale Conosco */
         #fale-conosco {
             max-width: 900px;
             margin: 0 auto;
@@ -390,19 +422,27 @@
             border: 0;
         }
 
+        /* Botões Sociais */
+        .social-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background-color: #25D366;
+            background-color: var(--whatsapp);
             color: white;
             padding: 14px 28px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
-            margin-top: 10px;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             transition: var(--transition);
         }
@@ -413,11 +453,28 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
-        .whatsapp-btn svg {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
+            transition: var(--transition);
         }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(220, 39, 67, 0.6);
+        }
+
+        .whatsapp-btn svg, .instagram-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
         /* Footer */
         footer {
@@ -428,35 +485,33 @@
             margin-top: 40px;
         }
 
-        /* Otimizações Responsivas Específicas para Celulares */
+        .footer-info {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+        
+        .footer-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .hero-title { font-size: 2.1rem; }
             .hero-subtitle { font-size: 1rem; }
-            
-            .flex-container, .flex-container.reverse { 
-                flex-direction: column; 
-                padding: 1.5rem;
-                gap: 20px;
-            }
-
-            section {
-                padding: 60px 4%;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            #fale-conosco {
-                padding: 1.5rem 1rem;
-            }
+            .flex-container, .flex-container.reverse { flex-direction: column; padding: 1.5rem; gap: 20px; }
+            section { padding: 60px 4%; }
+            h2 { font-size: 1.8rem; }
+            #fale-conosco { padding: 1.5rem 1rem; }
+            .social-container { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navegação -->
+    <!-- Navegação -->
     <header>
         <nav>
             <a href="#inicio" class="logo">
@@ -471,7 +526,7 @@
                 <li><a href="#avaliacoes">Avaliações</a></li>
                 <li><a href="#fale-conosco">Contato</a></li>
             </ul>
-            <a href="#fale-conosco" class="btn-agendar">Agendar</a>
+            <a href="https://wa.me/5511930135055?text=Ol%C3%A1!%20Estou%20no%20site%20da%20cl%C3%ADnica%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" class="btn-agendar">Agendar Agora</a>
         </nav>
     </header>
 
@@ -480,9 +535,10 @@
         <h1 class="hero-title">Inovação e Cuidado Excepcional</h1>
         <p class="hero-subtitle">Referência no Itaim Paulista. Uma infraestrutura completa para garantir a saúde e o bem-estar do seu melhor amigo.</p>
         
+        <a href="https://wa.me/5511930135055?text=Ol%C3%A1!%20Preciso%20falar%20com%20um%20veterin%C3%A1rio." target="_blank" class="btn-agendar hero-cta">Fale com um Veterinário Agora</a>
+
         <h3 style="color: var(--accent-color); margin-bottom: 0.8rem; font-size: 1.1rem;">Especialidades em Destaque</h3>
         
-        <!-- 4 Pilares Principais -->
         <div class="specialty-grid">
             <div class="specialty-card" onclick="location.href='#fale-conosco'">
                 <h3>🩺 Consulta & Rotina</h3>
@@ -502,19 +558,16 @@
             </div>
         </div>
 
-        <!-- Carrossel Contínuo e Fluido -->
         <div class="ticker-container">
             <div class="ticker-wrapper">
-                <!-- Bloco Original -->
                 <div class="ticker-item"><span>🐾</span> Castração Segura</div>
-                <div class="ticker-item"><span>🏥</span> Internação 24h</div>
+                <div class="ticker-item"><span>🏥</span> Internação</div>
                 <div class="ticker-item"><span>💉</span> Vacinação</div>
                 <div class="ticker-item"><span>⚡</span> Cirurgia Geral</div>
                 <div class="ticker-item"><span>🔬</span> Exames Laboratoriais</div>
                 <div class="ticker-item"><span>🩻</span> Ultrassom & Raio-X</div>
-                <!-- Bloco Duplicado -->
                 <div class="ticker-item"><span>🐾</span> Castração Segura</div>
-                <div class="ticker-item"><span>🏥</span> Internação 24h</div>
+                <div class="ticker-item"><span>🏥</span> Internação</div>
                 <div class="ticker-item"><span>💉</span> Vacinação</div>
                 <div class="ticker-item"><span>⚡</span> Cirurgia Geral</div>
                 <div class="ticker-item"><span>🔬</span> Exames Laboratoriais</div>
@@ -547,7 +600,7 @@
             <div class="service-item">
                 <img src="img-internacao.jpg" alt="Estrutura de Internação" class="service-img">
                 <h3>🏥 Internação Moderna</h3>
-                <p>Ambientes separados e climatizados para cães e gatos, monitoramento 24h e suporte avançado de vida para recuperação segura.</p>
+                <p>Ambientes separados e climatizados para cães e gatos, monitoramento intensivo e suporte avançado de vida para recuperação segura.</p>
             </div>
             <div class="service-item">
                 <img src="img-laboratorio.jpg" alt="Laboratório Próprio" class="service-img">
@@ -557,7 +610,7 @@
             <div class="service-item">
                 <img src="img-cirurgia.jpg" alt="Centro Cirúrgico" class="service-img">
                 <h3>⚕️ Centro Cirúrgico</h3>
-                <p>Equipado com anestesia inalatória, monitores multiparamétricos e suporte completo para cirurgias eletivas e de emergência.</p>
+                <p>Equipado com anestesia inalatória, monitores multiparamétricos e suporte completo para cirurgias eletivas.</p>
             </div>
         </div>
     </section>
@@ -585,7 +638,7 @@
                 </div>
             </div>
             <div class="image-half">
-                <img src="vet-cuidando-pet.png" alt="Veterinário examinando cachorro">
+                <img src="vet-cuidando-pet.png" alt="Veterinária examinando cachorro">
             </div>
         </div>
     </section>
@@ -608,7 +661,6 @@
             </div>
         </div>
 
-        <!-- Botão para ver todas as avaliações no Google -->
         <div style="text-align: center; margin-top: 35px;">
             <a href="https://maps.app.goo.gl/QHiTwZUE4cE2TFby6" target="_blank" style="display: inline-block; background-color: var(--primary-color); color: var(--white); padding: 12px 25px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: var(--transition); box-shadow: 0 4px 10px rgba(74, 20, 140, 0.3);">
                 ⭐ Ver todas as avaliações no Google
@@ -621,32 +673,43 @@
         <div class="contact-info">
             <h2>Fale Conosco</h2>
             <p>Estamos prontos para atender você e o seu pet com o mais alto padrão de qualidade.</p>
-            
+
             <h3>📍 Nossa Localização</h3>
             <p><strong>18 Ki Late</strong></p>
             <p>Rua Valente de Novais, 403</p>
             <p>Itaim Paulista, São Paulo - SP, 08120-420</p>
             
-            <!-- Mapa do Google Incorporado -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5280287413627!2d-46.40871142468307!3d-23.504190760086273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce63e5b3802e85%3A0xc3c5efc077d704ea!2sR.%20Valente%20de%20Novais%2C%20403%20-%20Itaim%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008120-420!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <h3>📞 Contatos</h3>
-            <p style="margin-bottom: 15px;">Email: contato@18kilate.com.br</p>
+            <p>Email: contato@18kilate.com.br</p> 
             
-            <!-- Botão do WhatsApp Direto -->
-            <a href="https://wa.me/551111111111" target="_blank" class="whatsapp-btn">
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                (11) 1111-1111
-            </a>
+            <!-- Botões Sociais -->
+            <div class="social-container">
+                <a href="https://wa.me/5511930135055?text=Ol%C3%A1!%20Estou%20no%20site%20da%20cl%C3%ADnica%20e%20preciso%20de%20atendimento." target="_blank" class="whatsapp-btn">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    (11) 93013-5055
+                </a>
+                
+                <a href="https://www.instagram.com/18kilateclinicaveterinaria" target="_blank" class="instagram-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    @18kilateclinicaveterinaria
+                </a>
+            </div>
         </div>
     </section>
+
+    <!-- Botão WhatsApp Flutuante Fixo -->
+    <a href="https://wa.me/5511930135055?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es." target="_blank" class="whatsapp-float">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 18 Ki Late. Todos os direitos reservados.</p>
-        <p>Rua Valente de Novais, 403 - Itaim Paulista, SP</p>
+        <p class="footer-info">🕒 Segunda a Sábado, das 8h às 20h</a></p>
     </footer>
 
 </body>
